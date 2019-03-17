@@ -13,19 +13,23 @@
 <script src="http://code.jquery.com/jquery-3.3.1.js"></script>
 
 <script>
-    let googleURL = "https://accounts.google.com/o/oauth2/v2/auth";
+    let twitchURL = "https://id.twitch.tv/oauth2/authorize";
+
     let options = {
-        client_id:'YOUR-GOOGLE-CLIENT-ID',
-        redirect_uri: 'YOUR-SERVER-URL/oauth',
-        scope: 'email openid profile',
-        prompt: 'consent',
+        client_id:'ojnuun5vdjh33lk9qvwz1o5pt8usbw',
+        redirect_uri: 'http://localhost:3000/oauth',
+        scope: 'user:read:email',
         response_type: 'code'
     };
+
     let QueryString = Object.keys(options).map( (key,i) => {
         return `${key}=` + encodeURIComponent(options[key]);
     }).join("&");
-    let authURL = `${googleURL}?${QueryString}`;
-    $('#oauth').append(`<a href="${authURL}">Login With Google</a>`);
+
+    let authURL = `${twitchURL}?${QueryString}`;
+
+    $('#oauth').append(`<a href="${authURL}">Login With Twitch</a>`);
+
 </script>
 
 
